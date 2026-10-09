@@ -55,7 +55,7 @@ function TestPage() {
         </div>
 
         <div key={index} className="animate-fade-up mt-10 rounded-3xl bg-card p-6 shadow-card sm:p-10">
-          <h2 className="text-xl font-semibold leading-snug sm:text-2xl">{QUESTIONS[index].text}</h2>
+          <h2 className="text-xl font-semibold leading-snug sm:text-2xl">{QUESTIONS[index]?.text}</h2>
           <div className="mt-8 grid grid-cols-5 gap-2 sm:gap-3">
             {[1, 2, 3, 4, 5].map((v) => (
               <button
