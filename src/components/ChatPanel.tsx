@@ -9,7 +9,7 @@ const SUGGESTIONS = [
   "Bu peşədə maaşlar necədir?",
 ];
 
-export function ChatPanel({ context }: { context?: string }) {
+export function ChatPanel({ context }: { context?: string | undefined }) {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);

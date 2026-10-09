@@ -75,7 +75,7 @@ function TestPage() {
             <span>{LABELS[0]}</span>
             <span>{LABELS[4]}</span>
           </div>
-          {current > 0 && <p className="mt-4 text-center text-sm text-teal-accent">{LABELS[current - 1]}</p>}
+          {current > 0 && <p className="mt-4 text-center text-sm text-teal-accent">{LABELS[(current || 1) - 1]}</p>}
         </div>
 
         <div className="mt-6 flex items-center justify-between">

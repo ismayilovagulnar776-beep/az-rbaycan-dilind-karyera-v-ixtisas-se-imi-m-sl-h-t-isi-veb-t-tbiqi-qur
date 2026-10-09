@@ -7,7 +7,7 @@ Həmişə yalnız Azərbaycan dilində cavab ver. Cavabların qısa (maksimum 15
 Azərbaycan universitetləri və əmək bazarı kontekstini nəzərə al. Siyahılardan istifadə edə bilərsən.`;
 
 export async function handleChat(request: Request) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) return new Response("AI açarı tapılmadı", { status: 500 });
 
   const body = (await request.json()) as {
