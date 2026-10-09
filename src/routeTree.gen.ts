@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MesqRouteImport } from './routes/mesq'
 import { Route as NeticeRouteImport } from './routes/netice'
 import { Route as TestRouteImport } from './routes/test'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -17,6 +18,11 @@ import { Route as ApiChatRouteImport } from './routes/api/chat'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MesqRoute = MesqRouteImport.update({
+  id: '/mesq',
+  path: '/mesq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NeticeRoute = NeticeRouteImport.update({
@@ -37,12 +43,14 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/mesq': typeof MesqRoute
   '/netice': typeof NeticeRoute
   '/test': typeof TestRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/mesq': typeof MesqRoute
   '/netice': typeof NeticeRoute
   '/test': typeof TestRoute
   '/api/chat': typeof ApiChatRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/mesq': typeof MesqRoute
   '/netice': typeof NeticeRoute
   '/test': typeof TestRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/netice' | '/test' | '/api/chat'
+  fullPaths: '/' | '/mesq' | '/netice' | '/test' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/netice' | '/test' | '/api/chat'
-  id: '__root__' | '/' | '/netice' | '/test' | '/api/chat'
+  to: '/' | '/mesq' | '/netice' | '/test' | '/api/chat'
+  id: '__root__' | '/' | '/mesq' | '/netice' | '/test' | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MesqRoute: typeof MesqRoute
   NeticeRoute: typeof NeticeRoute
   TestRoute: typeof TestRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mesq': {
+      id: '/mesq'
+      path: '/mesq'
+      fullPath: '/mesq'
+      preLoaderRoute: typeof MesqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/netice': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MesqRoute: MesqRoute,
   NeticeRoute: NeticeRoute,
   TestRoute: TestRoute,
   ApiChatRoute: ApiChatRoute,
