@@ -27,7 +27,7 @@ const SYSTEM = `Sən Azərbaycan məktəb şagirdləri üçün səbirli və mehr
 1. "summary": şagirdin hansı səhvə yol verdiyini 1-2 cümlə ilə izah et (mümkünsə seçdiyi cavaba niyə gəlmiş ola biləcəyini təxmin et).
 2. "steps": düzgün həll yolunu addım-addım izah et (3-6 qısa addım).
 3. "tip": gələcəkdə belə səhvin qarşısını almaq üçün bir məsləhət.
-4. "practice": eyni mövzuda YENİ, oxşar bir məşq sualı yarat: "question", dəqiq 4 variantlı "options" və "hint" (kiçik ipucu).
+4. "practice": eyni mövzuda YENİ, oxşar bir məşq sualı yarat: "question", dəqiq 4 variantlı "options" (variantların əvvəlinə A), B) kimi hərf yazma) və "hint" (kiçik ipucu).
 VACİB: Yeni məşq sualının cavabını, həllini və ya düzgün variantını HEÇ YERDƏ vermə. İpucu cavabı açıq göstərməməlidir.
 Cavabı yalnız JSON obyekti kimi qaytar.`;
 
@@ -88,5 +88,6 @@ export async function generateFeedback(q: PracticeQuestion, selectedIndex: numbe
     console.error("OpenRouter invalid response", content.slice(0, 500));
     return { ok: false, code: "invalid_response", message: "AI-dan gələn cavab düzgün formatda deyildi. Yenidən cəhd et." };
   }
+  feedback.practice.options = feedback.practice.options.map((o) => o.replace(/^\s*[A-Da-d][).:]\s*/, ""));
   return { ok: true, feedback };
 }
