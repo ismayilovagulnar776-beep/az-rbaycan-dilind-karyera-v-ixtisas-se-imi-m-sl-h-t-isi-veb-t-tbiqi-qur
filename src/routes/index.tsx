@@ -41,6 +41,9 @@ function Index() {
         >
           Testə başla <ArrowRight className="h-5 w-5" />
         </Link>
+        <Link to="/mesq" className="mt-4 text-sm font-medium text-primary hover:underline">
+          və ya fənlər üzrə məşq testini keç →
+        </Link>
 
         <div className="mt-16 grid w-full gap-4 sm:grid-cols-3">
           {steps.map((s) => (
