@@ -25,7 +25,7 @@ function TestPage() {
   const [answers, setAnswers] = useState<number[]>(Array(QUESTIONS.length).fill(0));
   const total = QUESTIONS.length;
   const answered = answers.filter((a) => a > 0).length;
-  const current = answers[index];
+  const current = answers[index] ?? 0;
   const isLast = index === total - 1;
 
   const choose = (v: number) => {
